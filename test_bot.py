@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import logging
 import os
-
+from text_proc import TextEvaluator
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -25,4 +25,7 @@ async def on_message(message):
     print(f'{username}: {content}')
 
 
-client.run(TOKEN)
+# client.run(TOKEN)
+
+eval = TextEvaluator()
+print(eval.evaluate("Hello world!"))

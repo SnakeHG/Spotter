@@ -4,6 +4,7 @@ import logging
 import os
 
 
+
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
@@ -21,6 +22,10 @@ async def on_message(message):
     
     username = message.author.display_name 
     content = message.content
+
+    if content == "ban me": # Sample illegal message (replace with function to detect if message should be illegal)
+        await message.delete() # deletes the message
+        return
 
     print(f'{username}: {content}')
 

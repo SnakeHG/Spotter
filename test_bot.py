@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import logging
 import os
+from text_proc import TextEvaluator
 from safe_browsing import SafeBrowsingChecker, extract_urls
 from dotenv import load_dotenv
 
@@ -57,4 +58,7 @@ async def on_message(message):
     print(f'{username}: {content}')
 
 
-client.run(TOKEN)
+# client.run(TOKEN)
+
+# eval = TextEvaluator()
+# print(eval.evaluate("Hello world!"))

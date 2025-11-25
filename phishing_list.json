@@ -1,0 +1,224 @@
+[
+  {
+    "id": "verify_account",
+    "match": "verify your account|verify account|account verification|confirm your account",
+    "tags": ["phishing", "credential"],
+    "severity": 5
+  },
+  {
+    "id": "suspicious_login",
+    "match": "suspicious login|unauthorized login|unusual login|unknown login",
+    "tags": ["phishing", "security"],
+    "severity": 5
+  },
+  {
+    "id": "urgent_action",
+    "match": "urgent action required|immediate action required|act now|must act now|your immediate attention",
+    "tags": ["phishing", "urgency"],
+    "severity": 5
+  },
+  {
+    "id": "account_limited",
+    "match": "your account has been limited|account restricted|account temporarily disabled|account locked",
+    "tags": ["phishing", "credential"],
+    "severity": 5
+  },
+  {
+    "id": "password_reset",
+    "match": "reset your password|password reset required|password expired|change your password",
+    "tags": ["phishing", "credential"],
+    "severity": 4
+  },
+  {
+    "id": "billing_issue",
+    "match": "billing issue|billing problem|payment problem|payment issue|billing error",
+    "tags": ["phishing", "financial"],
+    "severity": 4
+  },
+  {
+    "id": "invoice_due",
+    "match": "invoice attached|overdue invoice|unpaid invoice|payment overdue",
+    "tags": ["phishing", "financial"],
+    "severity": 4
+  },
+  {
+    "id": "payment_declined",
+    "match": "payment declined|transaction declined|failed payment|failed transaction",
+    "tags": ["phishing", "financial"],
+    "severity": 4
+  },
+  {
+    "id": "identity_verification",
+    "match": "identity verification|verify your identity|identity confirmation|required verification",
+    "tags": ["phishing", "credential"],
+    "severity": 4
+  },
+  {
+    "id": "security_alert",
+    "match": "security alert|security warning|account security notice",
+    "tags": ["phishing", "security"],
+    "severity": 4
+  },
+  {
+    "id": "confirm_information",
+    "match": "confirm your information|update your information|information required to continue",
+    "tags": ["phishing"],
+    "severity": 4
+  },
+  {
+    "id": "bank_verification",
+    "match": "verify your bank|bank verification|bank account update|financial verification",
+    "tags": ["phishing", "financial"],
+    "severity": 5
+  },
+  {
+    "id": "delivery_failure",
+    "match": "delivery failed|delivery failure|package held|cannot deliver package|shipping exception",
+    "tags": ["phishing", "logistics"],
+    "severity": 3
+  },
+  {
+    "id": "tracking_update",
+    "match": "tracking update|tracking notice|package update|shipping update",
+    "tags": ["phishing", "logistics"],
+    "severity": 3
+  },
+  {
+    "id": "tax_refund",
+    "match": "tax refund|refund available|unclaimed refund|claim your refund",
+    "tags": ["phishing", "financial"],
+    "severity": 3
+  },
+  {
+    "id": "unusual_activity",
+    "match": "unusual activity|unusual behavior detected|suspicious activity|unauthorized activity",
+    "tags": ["phishing", "security"],
+    "severity": 4
+  },
+  {
+    "id": "account_update",
+    "match": "update account information|account update required|update your account details",
+    "tags": ["phishing", "credential"],
+    "severity": 4
+  },
+  {
+    "id": "email_verification",
+    "match": "verify your email|email verification required|email not verified",
+    "tags": ["phishing", "credential"],
+    "severity": 3
+  },
+  {
+    "id": "credential_theft",
+    "match": "enter your password|enter your login|re-enter your credentials|provide your login",
+    "tags": ["phishing", "credential"],
+    "severity": 5
+  },
+  {
+    "id": "fake_support",
+    "match": "technical support|support team|customer service representative",
+    "tags": ["phishing", "spoofing"],
+    "severity": 3
+  },
+  {
+    "id": "malware_attachment",
+    "match": "download attachment|open attached file|file attached for review",
+    "tags": ["phishing", "malware"],
+    "severity": 4
+  },
+  {
+    "id": "financial_reward",
+    "match": "you have won|prize winner|congratulations you won|reward available",
+    "tags": ["phishing", "scam"],
+    "severity": 3
+  },
+  {
+    "id": "gift_card",
+    "match": "gift card|amazon card|google play card|itunes card|steam card",
+    "tags": ["phishing", "financial"],
+    "severity": 3
+  },
+  {
+    "id": "crypto_scam",
+    "match": "crypto wallet|bitcoin transfer|eth transfer|crypto investment opportunity",
+    "tags": ["phishing", "scam"],
+    "severity": 3
+  },
+  {
+    "id": "fake_ceo",
+    "match": "ceo request|executive request|urgent from ceo|confidential task",
+    "tags": ["phishing", "spoofing"],
+    "severity": 4
+  },
+  {
+    "id": "wire_transfer",
+    "match": "wire transfer|bank transfer urgently|send funds immediately",
+    "tags": ["phishing", "financial"],
+    "severity": 5
+  },
+  {
+    "id": "overdue_payment",
+    "match": "past due|payment overdue|final notice|last warning",
+    "tags": ["phishing", "urgency"],
+    "severity": 4
+  },
+  {
+    "id": "verify_address",
+    "match": "verify your address|address verification required|confirm your address",
+    "tags": ["phishing", "logistics"],
+    "severity": 3
+  },
+  {
+    "id": "fraud_alert",
+    "match": "fraudulent charges|fraud alert|possible fraud detected",
+    "tags": ["phishing", "security"],
+    "severity": 5
+  },
+  {
+    "id": "email_suspension",
+    "match": "email will be suspended|email shutdown|mailbox full|email deactivation notice",
+    "tags": ["phishing"],
+    "severity": 4
+  },
+  {
+    "id": "fake_document",
+    "match": "document attached|important document attached|legal document enclosed",
+    "tags": ["phishing", "malware"],
+    "severity": 3
+  },
+  {
+    "id": "salary_update",
+    "match": "salary update|payroll issue|hr request|benefit update",
+    "tags": ["phishing", "financial"],
+    "severity": 3
+  },
+  {
+    "id": "cloud_storage",
+    "match": "shared file|shared document|cloud storage access|view document online",
+    "tags": ["phishing", "credential"],
+    "severity": 4
+  },
+  {
+    "id": "fake_mfa",
+    "match": "mfa verification|two factor verification|authentication code required",
+    "tags": ["phishing", "security"],
+    "severity": 4
+  },
+  {
+    "id": "fake_browser_warning",
+    "match": "your browser is out of date|security update required|install the latest security patch",
+    "tags": ["phishing", "malware"],
+    "severity": 3
+  },
+  {
+    "id": "fake_subscription",
+    "match": "subscription expired|renew your subscription|auto renewal failed",
+    "tags": ["phishing", "financial"],
+    "severity": 3
+  },
+  {
+    "id": "fake_courier",
+    "match": "fedex.*failed|ups.*failed|dhl.*failed|package unable to deliver",
+    "tags": ["phishing", "logistics"],
+    "severity": 3
+  }
+]

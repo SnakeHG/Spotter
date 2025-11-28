@@ -43,7 +43,19 @@ class TextEvaluator():
         # for e in result:
         #     print(f"PHISH LABEL: {e.label}, SCORE: {e.score}")
 
-        return result[0].score
+        if not result:
+            return 0.0
+
+        phishing = next((e for e in result if getattr(e, "label", "").lower() == "phishing"),
+                result[0])
+
+        # ensure score is a float on the object
+        try:
+            phishing.score = float(phishing.score)
+        except Exception:
+            phishing.score = 0.0
+
+        return phishing.score
     
     def _eval_regex(self, text):
         toxic_results = []

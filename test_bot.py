@@ -45,12 +45,11 @@ async def on_message(message):
     # First: evaluate the text content for toxicity / phishing using text_proc
     try:
         loop = asyncio.get_running_loop()
-        toxic_score_struct, phish_score = await loop.run_in_executor(None, text_evaluator.evaluate, content)
+        toxic_score, phish_score = await loop.run_in_executor(None, text_evaluator.evaluate, content)
     except Exception as e:
         # If evaluation fails, log and continue with URL checks
         print(f"Text evaluation error: {e}")
-        toxic_score_struct, phish_score = 0.0, 0.0
-
+        toxic_score, phish_score = 0.0, 0.0
     # Act on evaluation results
     if phish_score >= PHISH_THRESHOLD:
         await message.delete()
@@ -60,16 +59,12 @@ async def on_message(message):
         print(f"Removed suspected phishing message from {username}: score={phish_score:.2f}")
         return
 
-    for score_struct in toxic_score_struct:
-        label = score_struct.label
-        score = score_struct.score
-
-        if score >= TOXIC_THRESHOLD:
-            await message.delete()
-            await message.channel.send(
-                f"⚠️ {username}, your message violated community standards (reason={label}, toxicity={score:.2f}) and was removed."
-            )
-        print(f"Removed toxic message from {username}: score={score:.2f}, reason={label}")
+    if toxic_score >= TOXIC_THRESHOLD:
+        await message.delete()
+        await message.channel.send(
+            f"⚠️ {username}, your message violated community standards (toxicity={toxic_score:.2f}) and was removed."
+        )
+        print(f"Removed toxic message from {username}: score={toxic_score:.2f}")
         return
 
     # Then check extracted URLs (existing behavior)

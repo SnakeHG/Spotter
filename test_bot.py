@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+from discord.utils import oauth_url
+from discord import Permissions
 import logging
 import os
 from text_proc import TextEvaluator
@@ -17,18 +19,30 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 
-client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 # Initialize Safe Browsing checker
 url_checker = SafeBrowsingChecker(GOOGLE_API_KEY)
 
-@client.event
-async def on_ready():
-    print(f'Logged in as {client.user}')
+@bot.command()
+async def invite(ctx):
+    perms = Permissions(send_messages=True, read_messages=True)
+    invite_url = oauth_url(
+        bot.user.id,
+        permissions=perms,
+        scopes=("bot", "applications.commands")
+    )
+    await ctx.send(f"Invite me using this link:\n{invite_url}")
 
-@client.event
+
+@bot.event
+async def on_ready():
+    print(f'Logged in as {bot.user}')
+
+@bot.event
 async def on_message(message):
-    if message.author == client.user:
+    await bot.process_commands(message)
+    if message.author == bot.user:
         return
     
     username = message.author.display_name 
@@ -58,7 +72,7 @@ async def on_message(message):
     print(f'{username}: {content}')
 
 
-# client.run(TOKEN)
+bot.run(TOKEN)
 
 # eval = TextEvaluator()
 # print(eval.evaluate("Hello world!"))

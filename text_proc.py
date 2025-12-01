@@ -78,5 +78,5 @@ class TextEvaluator():
         
         regex = self._eval_regex(text)
         toxic = max(self._eval_toxic(text)) + norm(regex[0])
-        phish = norm(regex[1])
+        phish = self._eval_phish(text) + norm(regex[1])
         return toxic, phish

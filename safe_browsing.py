@@ -61,6 +61,20 @@ def extract_urls(text):
     Simple implementation - can be improved with regex
     """
     import re
-    url_pattern = r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
-    urls = re.findall(url_pattern, text)
+    url_pattern = re.compile(
+        r'\b(?:https?://)?'                                # optional scheme
+        r'(?:localhost|'                                   # or localhost
+        r'(?:\d{1,3}\.){3}\d{1,3}|'                        # or IPv4
+        r'(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,})'               # or domain
+        r'(?::\d+)?'                                       # optional port
+        r'(?:/[^\s\'"<>]*)?',                              # optional path/query/fragment
+        flags=re.IGNORECASE
+    )
+
+    urls = []
+    for m in url_pattern.finditer(text):
+        u = m.group(0)
+        # strip common trailing punctuation that often follows URLs in text
+        u = u.rstrip('.,:;!?)"\']')
+        urls.append(u)
     return urls

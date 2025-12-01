@@ -30,8 +30,8 @@ class TextEvaluator():
             text=text
         )
         score = [float(e.score) for e in result]
-        # for e in result:
-        #     print(f"TOXIC LABEL: {e.label}, SCORE: {e.score}")
+        for e in result:
+            print(f"TOXIC LABEL: {e.label}, SCORE: {e.score}")
 
         return score
     
@@ -40,8 +40,8 @@ class TextEvaluator():
             model="ealvaradob/bert-finetuned-phishing",
             text=text
         )
-        # for e in result:
-        #     print(f"PHISH LABEL: {e.label}, SCORE: {e.score}")
+        for e in result:
+            print(f"PHISH LABEL: {e.label}, SCORE: {e.score}")
 
         if not result:
             return 0.0
@@ -78,6 +78,5 @@ class TextEvaluator():
         
         regex = self._eval_regex(text)
         toxic = max(self._eval_toxic(text)) + norm(regex[0])
-        phish = self._eval_phish(text) + norm(regex[1])
-        
+        phish = norm(regex[1])
         return toxic, phish

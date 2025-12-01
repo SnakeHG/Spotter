@@ -56,25 +56,6 @@ async def on_message(message):
     username = message.author.display_name 
     content = message.content
 
-
-    # Then check extracted URLs (existing behavior)
-    urls = extract_urls(content)
-    if urls:
-        for url in urls:
-            is_safe, threat_types = url_checker.check_url(url)
-            
-            if is_safe == False:  # Malicious URL detected
-                await message.delete()
-                threat_list = ", ".join(threat_types)
-                warning = await message.channel.send(
-                    f"⚠️ {username}, your message contained a malicious link and was removed.\n"
-                    f"Threat types: {threat_list}"
-                )
-                print(f"Blocked malicious URL from {username}: {url} ({threat_list})")
-                return
-            elif is_safe is None:  # API error
-                print(f"Warning: Could not check URL {url} (API error)")
-
     # First: evaluate the text content for toxicity / phishing using text_proc
     try:
         loop = asyncio.get_running_loop()
@@ -104,7 +85,27 @@ async def on_message(message):
         await message.delete() # deletes the message
         return
 
-    print(f'{username}: {content}')
+
+    # Then check extracted URLs (existing behavior)
+    urls = extract_urls(content)
+    if urls:
+        for url in urls:
+            is_safe, threat_types = url_checker.check_url(url)
+            
+            if is_safe == False:  # Malicious URL detected
+                await message.delete()
+                threat_list = ", ".join(threat_types)
+                warning = await message.channel.send(
+                    f"⚠️ {username}, your message contained a malicious link and was removed.\n"
+                    f"Threat types: {threat_list}"
+                )
+                print(f"Blocked malicious URL from {username}: {url} ({threat_list})")
+                return
+            elif is_safe is None:  # API error
+                print(f"Warning: Could not check URL {url} (API error)")
+
+
+    print(f'{username}: {content} {phish_score} {toxic_score}')
 
 bot.run(TOKEN)
 

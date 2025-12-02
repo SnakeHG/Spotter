@@ -17,7 +17,10 @@ Use '''python3 test_bot.py''' to run the file
 
 General Steps:
 ---------------
-
 1. get code from github
 2. get tokens in .env
 3. run test_bot
+
+Contribution Breakdown
+----------------------
+Jenny conceptualized the URL threat detection approach as a core solution to Discord's malware delivery problem, conducted research on Discord security vulnerabilities and malware delivery mechanisms, authored the Problem/Significance statement and co-wrote the project proposal, then implemented the URL-checking functionality by developing safe_browsing.py and integrating it into test_bot.py using Google Safe Browsing API. Additionally, Jenny facilitated team communication and coordinated meeting schedules to ensure smooth project execution.

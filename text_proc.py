@@ -74,7 +74,7 @@ class TextEvaluator():
     def evaluate(self, text):
         def norm(x):
             l = len(text.split())
-            return 1 - math.exp(x / l)
+            return 1 - math.exp(-x / l)
         
         regex = self._eval_regex(text)
         toxic = max(self._eval_toxic(text)) + norm(regex[0])

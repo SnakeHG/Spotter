@@ -24,3 +24,5 @@ General Steps:
 Contribution Breakdown
 ----------------------
 Jenny conceptualized the URL threat detection approach as a core solution to Discord's malware delivery problem, conducted research on Discord security vulnerabilities and malware delivery mechanisms, authored the Problem/Significance statement and co-wrote the project proposal, then implemented the URL-checking functionality by developing safe_browsing.py and integrating it into test_bot.py using Google Safe Browsing API. Additionally, Jenny facilitated team communication and coordinated meeting schedules to ensure smooth project execution.
+
+Shu combined the backend integration, merging individual contributions from Jenny and Ye into a unified operational framework. He optimized the bot's interaction with external libraries by resolving data retrieval issues from huggingface and validated the bot's functionality through testing and debugging within Discord server.

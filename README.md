@@ -28,3 +28,5 @@ Jenny conceptualized the URL threat detection approach as a core solution to Dis
 Shu combined the backend integration, merging individual contributions from Jenny and Ye into a unified operational framework. He optimized the bot's interaction with external libraries by resolving data retrieval issues from huggingface and validated the bot's functionality through testing and debugging within Discord server.
 
 Henry developed base features of the Discord bot, including message parsing and reaction handling. He coordinated team meetings, assigned roles, and organized development tasks to ensure smooth collaboration. He also set up the Discord bot, server, and GitHub repository, establishing the project infrastructure for version control, deployment, and team coordination
+
+Ye designed and built the text-malware detection system, consisting of a rule-based regex component and a model-inference component.

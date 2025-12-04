@@ -87,7 +87,7 @@ async def on_message(message):
         print(f"Text evaluation error: {e}")
         toxic_score, phish_score = 0.0, 0.0
     # Act on evaluation results
-    if phish_score >= PHISH_THRESHOLD:
+    if not urls and phish_score >= PHISH_THRESHOLD:
         await message.delete()
         await message.channel.send(
             f"⚠️ {username}, your message was removed: suspected phishing (score={phish_score:.2f})."
